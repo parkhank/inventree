@@ -1,0 +1,35 @@
+@import '../../partials/_variables.scss';
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 12px 0px 12px;
+  background-color: $primary-light;
+  &__logo {
+    height: 40px;
+  }
+  &__right {
+    display: flex;
+    margin-right: 24px;
+  }
+  &__dropdown {
+    position: relative;
+    margin-left: 80px;
+    font-weight: 500;
+    color: $primary-dark;
+  }
+  &__dropdownList {
+    position: absolute;
+    top: 37px;
+    left: -8px;
+  }
+  &__dropdownItem {
+    background-color: $primary-light;
+    padding: 4px 8px;
+    margin: 2px 0px;
+    // border-width: 1px;
+    // border-color: $primary-dark;
+    // border-style: solid;
+  }
+}
