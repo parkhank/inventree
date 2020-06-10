@@ -76,9 +76,9 @@ render() {
                 this.setState({ branchOpen: false })
                 }}>
                 <ul className="navigation__dropdownList">
-                  <a><li className="navigation__dropdownItem">Sherbourne</li></a>
-                  <li className="navigation__dropdownItem">Jarvis</li>
-                  <li className="navigation__dropdownItem">Huntley</li>
+                  <Link to="/branch/sherbourne"><li className="navigation__dropdownItem">Sherbourne</li></Link>
+                  <Link to="/branch/jarvis"><li className="navigation__dropdownItem">Jarvis</li></Link>
+                  <Link to="/branch/huntley"><li className="navigation__dropdownItem">Huntley</li></Link>
                 </ul>
               </OutsideClick>
               : null
@@ -94,9 +94,9 @@ render() {
                 this.setState({ countOpen: false })
                 }}>
                 <ul className="navigation__dropdownList">
-                  <a><li className="navigation__dropdownItem">Sherbourne</li></a>
-                  <li className="navigation__dropdownItem">Jarvis</li>
-                  <li className="navigation__dropdownItem">Huntley</li>
+                  <Link to="/count/sherbourne"><li className="navigation__dropdownItem">Sherbourne</li></Link>
+                  <Link to="/count/jarvis"><li className="navigation__dropdownItem">Jarvis</li></Link>
+                  <Link to="/count/huntley"><li className="navigation__dropdownItem">Huntley</li></Link>
                 </ul>
               </OutsideClick>
               : null
@@ -112,9 +112,9 @@ render() {
                 this.setState({ usageOpen: false })
                 }}>
                 <ul className="navigation__dropdownList">
-                  <a><li className="navigation__dropdownItem">Sherbourne</li></a>
-                  <li className="navigation__dropdownItem">Jarvis</li>
-                  <li className="navigation__dropdownItem">Huntley</li>
+                  <Link to="/usage/sherbourne"><li className="navigation__dropdownItem">Sherbourne</li></Link>
+                  <Link to="/usage/jarvis"><li className="navigation__dropdownItem">Jarvis</li></Link>
+                  <Link to="/usage/huntley"><li className="navigation__dropdownItem">Huntley</li></Link>
                 </ul>
               </OutsideClick>
               : null
