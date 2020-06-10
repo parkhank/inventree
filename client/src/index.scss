@@ -15,6 +15,13 @@
   font-family: 'Maitree';
 }
 
+a {
+  text-decoration: none;
+  &:hover {
+    box-sizing: border-box;
+  }
+}
+
 body {
   width: 100vw;
 }

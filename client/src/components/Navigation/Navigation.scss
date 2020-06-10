@@ -3,8 +3,7 @@
 .navigation {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 12px 12px 0px 12px;
+  padding: 12px 24px 0px 24px;
   background-color: $primary-light;
   &__logo {
     height: 40px;
@@ -15,21 +14,28 @@
   }
   &__dropdown {
     position: relative;
-    margin-left: 80px;
     font-weight: 500;
     color: $primary-dark;
   }
+  &__dropdownTitle {
+    width: 105px;
+    margin-right: 10px;
+    padding: 12px 0px 14px 10px;
+    &:hover {
+      background-color: $primary-highlight;
+    }
+  }
   &__dropdownList {
     position: absolute;
-    top: 37px;
-    left: -8px;
+    top: 52px;
+    left: 0px;
   }
   &__dropdownItem {
     background-color: $primary-light;
     padding: 4px 8px;
     margin: 2px 0px;
-    // border-width: 1px;
-    // border-color: $primary-dark;
-    // border-style: solid;
+    &:hover {
+      background-color: $primary-highlight;
+    }
   }
 }

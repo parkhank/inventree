@@ -1,25 +1,56 @@
 import React from 'react';
+import OutsideClick from 'react-outclick';
 import logo from '../../assets/logo.png';
 import './Navigation.scss';
 
 class Navigation extends React.Component {
 
 state = {
-  branchOpen: true,
+  branchOpen: false,
   countOpen: false,
   usageOpen: false,
 }
 
 handleBranchToggle = () => {
-
+  (!this.state.branchOpen)
+    ? this.setState({
+      branchOpen: true,
+      countOpen: false,
+      usageOpen: false,
+    })
+    : this.setState({
+      branchOpen: false,
+      countOpen: false,
+      usageOpen: false,
+    })
 }
 
 handleCountToggle = () => {
-
+  (!this.state.countOpen)
+    ? this.setState({
+      branchOpen: false,
+      countOpen: true,
+      usageOpen: false,
+    })
+    : this.setState({
+      branchOpen: false,
+      countOpen: false,
+      usageOpen: false,
+    })
 }
 
 handleUsageToggle = () => {
-
+  (!this.state.usageOpen)
+    ? this.setState({
+      branchOpen: false,
+      countOpen: false,
+      usageOpen: true,
+    })
+    : this.setState({
+      branchOpen: false,
+      countOpen: false,
+      usageOpen: false,
+    })
 }
 
 render() {
@@ -33,25 +64,61 @@ render() {
       </div>
       <div className="navigation__right">
         <div className="navigation__dropdown">
-          <p className="navigation__dropdownTitle">Branch</p>
+          <p
+            className="navigation__dropdownTitle"
+            onClick={this.handleBranchToggle}>Branch</p>
           { 
             (this.state.branchOpen)
-              ? <ul className="navigation__dropdownList">
-                  <li className="navigation__dropdownItem">Sherbourne</li>
+              ? <OutsideClick onOutsideClick={e => {
+                this.setState({ branchOpen: false })
+                }}>
+                <ul className="navigation__dropdownList">
+                  <a><li className="navigation__dropdownItem">Sherbourne</li></a>
                   <li className="navigation__dropdownItem">Jarvis</li>
                   <li className="navigation__dropdownItem">Huntley</li>
                 </ul>
+              </OutsideClick>
               : null
           }
         </div>
         <div className="navigation__dropdown">
-          Count
+          <p
+            className="navigation__dropdownTitle"
+            onClick={this.handleCountToggle}>Count</p>
+          { 
+            (this.state.countOpen)
+              ? <OutsideClick onOutsideClick={e => {
+                this.setState({ countOpen: false })
+                }}>
+                <ul className="navigation__dropdownList">
+                  <a><li className="navigation__dropdownItem">Sherbourne</li></a>
+                  <li className="navigation__dropdownItem">Jarvis</li>
+                  <li className="navigation__dropdownItem">Huntley</li>
+                </ul>
+              </OutsideClick>
+              : null
+          }
         </div>
         <div className="navigation__dropdown">
-          Usage
+          <p
+            className="navigation__dropdownTitle"
+            onClick={this.handleUsageToggle}>Usage</p>
+          { 
+            (this.state.usageOpen)
+              ? <OutsideClick onOutsideClick={e => {
+                this.setState({ usageOpen: false })
+                }}>
+                <ul className="navigation__dropdownList">
+                  <a><li className="navigation__dropdownItem">Sherbourne</li></a>
+                  <li className="navigation__dropdownItem">Jarvis</li>
+                  <li className="navigation__dropdownItem">Huntley</li>
+                </ul>
+              </OutsideClick>
+              : null
+          }
         </div>
         <div className="navigation__dropdown">
-          Invoice
+          <p className="navigation__dropdownTitle">Invoice</p>
         </div>
       </div>
     </div>
