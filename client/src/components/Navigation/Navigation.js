@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import OutsideClick from 'react-outclick';
 import logo from '../../assets/logo.png';
 import './Navigation.scss';
@@ -57,10 +58,12 @@ render() {
   return (
     <div className="navigation">
       <div className="navigation__left">
-        <img
-          className="navigation__logo"
-          src={logo}
-          alt="logo" />
+        <Link to="/">
+          <img
+            className="navigation__logo"
+            src={logo}
+            alt="logo" />
+        </Link>
       </div>
       <div className="navigation__right">
         <div className="navigation__dropdown">
@@ -118,7 +121,9 @@ render() {
           }
         </div>
         <div className="navigation__dropdown">
-          <p className="navigation__dropdownTitle">Invoice</p>
+          <Link to="/invoice">
+            <p className="navigation__dropdownTitle">Invoice</p>
+          </Link>
         </div>
       </div>
     </div>
