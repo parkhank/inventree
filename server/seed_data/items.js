@@ -82,5 +82,5 @@ module.exports = [
     cost: 45.75,
     unitsPerCase: null,
     kgPerCase: 11.3,
-  }
-];
+  },
+]

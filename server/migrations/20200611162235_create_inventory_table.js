@@ -3,15 +3,14 @@ exports.up = knex => {
   return knex.schema.createTable("inventory", table => {
     table.increments("id").primary();
     table
-      .integer("item_id")
-      .notNullable()
-      .references("id")
-      .inTable("items");
-    table
       .integer("location_id")
       .notNullable()
-      .references("id")
-      .inTable("locations");
+      .unsigned()
+      .references("locations.id");
+    table
+      .integer("item_id")
+      .notNullable()
+      .references("items.id");
     table
       .integer("cases")
       .notNullable()
@@ -20,5 +19,5 @@ exports.up = knex => {
 };
 
 exports.down = knex => {
-  return knex.schema.dropTable("inventory");
+  return knex.schema.dropTableIfExists("inventory");
 };

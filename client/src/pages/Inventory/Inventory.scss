@@ -1,1 +1,13 @@
 // Inventory Page SCSS
+.inventory {
+  padding: 12px;
+  &__title {
+    text-transform: capitalize;
+  }
+  &__item {
+    display: flex;
+  }
+  &__itemID {
+    width: 80px;
+  }
+}
