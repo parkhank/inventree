@@ -7,7 +7,15 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navigation />
-      <Inventory />
+      <Switch>
+        <Route
+          path="/"
+          exact
+          component={Inventory} />
+        <Route
+          path="/branch/:locationID"
+          component={Inventory} />
+      </Switch>
     </BrowserRouter>
   );
 }
