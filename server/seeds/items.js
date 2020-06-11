@@ -1,6 +1,6 @@
 const itemsData = require('../seed_data/itemsData');
 
-exports.seed = function(knex) {
+exports.seed = knex => {
   return knex("items")
     .del()
     .then(() => {
