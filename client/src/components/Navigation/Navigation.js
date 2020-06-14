@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import OutsideClick from 'react-outclick';
+import axios from 'axios';
 import logo from '../../assets/logo.png';
 import './Navigation.scss';
+
+const apiURL = "http://localhost:8080";
 
 class Navigation extends React.Component {
 
@@ -10,6 +13,7 @@ state = {
   branchOpen: false,
   countOpen: false,
   usageOpen: false,
+  locations: [],
 }
 
 handleBranchToggle = () => {
@@ -54,6 +58,18 @@ handleUsageToggle = () => {
     })
 }
 
+async componentDidMount() {
+  const locations = await axios.get(`${apiURL}/locations`);
+  const dropdowns = [];
+  locations.data.forEach(location => {
+    dropdowns.push(location.name)
+  })
+  this.setState({
+    ...this.state,
+    locations: dropdowns,
+  })
+}
+
 render() {
   return (
     <div className="navigation">
@@ -76,9 +92,15 @@ render() {
                 this.setState({ branchOpen: false })
                 }}>
                 <ul className="navigation__dropdownList">
-                  <Link to="/branch/sherbourne"><li className="navigation__dropdownItem">Sherbourne</li></Link>
-                  <Link to="/branch/jarvis"><li className="navigation__dropdownItem">Jarvis</li></Link>
-                  <Link to="/branch/huntley"><li className="navigation__dropdownItem">Huntley</li></Link>
+                  {
+                    this.state.locations.map((location, i) => {
+                      return(
+                        <Link key={i} to={`/branch/${location}`}>
+                          <li className="navigation__dropdownItem">{location}</li>
+                        </Link>
+                      )
+                    })
+                  }
                 </ul>
               </OutsideClick>
               : null
@@ -94,9 +116,15 @@ render() {
                 this.setState({ countOpen: false })
                 }}>
                 <ul className="navigation__dropdownList">
-                  <Link to="/count/sherbourne"><li className="navigation__dropdownItem">Sherbourne</li></Link>
-                  <Link to="/count/jarvis"><li className="navigation__dropdownItem">Jarvis</li></Link>
-                  <Link to="/count/huntley"><li className="navigation__dropdownItem">Huntley</li></Link>
+                  {
+                    this.state.locations.map((location, i) => {
+                      return(
+                        <Link key={i} to={`/count/${location}`}>
+                          <li className="navigation__dropdownItem">{location}</li>
+                        </Link>
+                      )
+                    })
+                  }
                 </ul>
               </OutsideClick>
               : null
@@ -112,9 +140,15 @@ render() {
                 this.setState({ usageOpen: false })
                 }}>
                 <ul className="navigation__dropdownList">
-                  <Link to="/usage/sherbourne"><li className="navigation__dropdownItem">Sherbourne</li></Link>
-                  <Link to="/usage/jarvis"><li className="navigation__dropdownItem">Jarvis</li></Link>
-                  <Link to="/usage/huntley"><li className="navigation__dropdownItem">Huntley</li></Link>
+                  {
+                    this.state.locations.map((location, i) => {
+                      return(
+                        <Link key={i} to={`/usage/${location}`}>
+                          <li className="navigation__dropdownItem">{location}</li>
+                        </Link>
+                      )
+                    })
+                  }
                 </ul>
               </OutsideClick>
               : null

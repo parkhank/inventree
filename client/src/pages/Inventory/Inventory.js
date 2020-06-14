@@ -23,9 +23,12 @@ async componentDidMount() {
 handleDisplayInventory = location => {
   return (
     <div className="inventory">
-      <h2 className="inventory__title">
-        {this.props.match.params.locationID}
-      </h2>
+      <div className="inventory__hero">
+        <h1 className="inventory__header">Inventory</h1>
+        <h2 className="inventory__title">
+          {this.props.match.params.locationID}
+        </h2>
+      </div>
       <div className="inventory__subtitles">
         <p className="inventory__subtitlesItemID">Item ID</p>
         <p className="inventory__subtitlesItemName">Item Name</p>
@@ -39,7 +42,7 @@ handleDisplayInventory = location => {
               <div key={inventory.id} className="inventory__row">
                 <p className="inventory__rowItemID">{inventory.item_id}</p>
                 <p className="inventory__rowItemName">{inventory.item_details.name}</p>
-                <p className="inventory__rowCases">{inventory.cases}</p>
+                <p className="inventory__rowCaseNumber">{inventory.cases}</p>
               </div>
             )
           })
@@ -65,16 +68,19 @@ handleDisplayInventoryAll = () => {
   }
   return(
     <div className="inventory">
-      <h2 className="inventory__title">
-        all locations
-      </h2>
+      <div className="inventory__hero">
+        <h1 className="inventory__header">Inventory</h1>
+        <h2 className="inventory__title">
+          all locations
+        </h2>
+      </div>
       <div className="inventory__subtitles">
         <p className="inventory__subtitlesItemID">Item ID</p>
         <p className="inventory__subtitlesItemName">Item Name</p>
         {
-          this.state.locations.map(location => {
+          this.state.locations.map((location, i) => {
             return(
-              <p className="inventory__subtitlesCases">
+              <p key={i} className="inventory__subtitlesCases">
                 {location.name}
               </p>
             )

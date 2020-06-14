@@ -7,5 +7,8 @@ module.exports = [
   },
   {
     name: 'huntley',
+  },
+  {
+    name: 'denison',
   }
 ]

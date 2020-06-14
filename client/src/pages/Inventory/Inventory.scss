@@ -1,18 +1,27 @@
 // Inventory Page SCSS
 @import '../../partials/_variables.scss';
 .inventory {
-  padding: 12px;
   background-color: $bg;
   height: 100vh;
+  &__hero {
+    padding: 80px 120px;
+    background-image: url("../../assets/hero.jpg");
+    background-size: cover;
+  }
+  &__header {
+    font-size: 60px;
+  }
   &__title {
     text-transform: capitalize;
     font-size: 20px;
-    padding: 12px 0px;
   }
   &__subtitles {
     display: flex;
     font-weight: bold;
-    padding-bottom: 8px;
+    padding: 12px 12px 12px 120px;
+    background-color: $primary-light;
+    margin-bottom: 8px;
+    color: $primary-dark;
     &ItemID {
       width: 100px;
     }
@@ -27,6 +36,7 @@
   }
   &__row {
     display: flex;
+    padding-left: 120px;
     &ItemID {
       width: 100px;
     }
