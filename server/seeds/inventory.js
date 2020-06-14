@@ -36,7 +36,7 @@ exports.seed = function(knex) {
               location_id: location, 
               item_id: item,
               // REMOVE BELOW LINE TO SET COUNTS TO 0
-              cases: Math.floor(Math.random() * 3)
+              // cases: Math.floor(Math.random() * 3)
             }
           )
         })
