@@ -32,7 +32,12 @@ exports.seed = function(knex) {
       itemIDs.map(item => {
         locationIDs.map(location => {
           inventoryData.push(
-            { location_id: location, item_id: item }
+            { 
+              location_id: location, 
+              item_id: item,
+              // REMOVE BELOW LINE TO SET COUNTS TO 0
+              cases: Math.floor(Math.random() * 3)
+            }
           )
         })
       })

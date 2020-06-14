@@ -1,35 +1,102 @@
 import React from 'react';
+import axios from 'axios';
 import './Inventory.scss';
-import exampleItemsData from '../../example_data/exampleItemsData';
+
+const apiURL = "http://localhost:8080";
 
 class Inventory extends React.Component {
 
 state = {
-  inventory: exampleItemsData,
+  inventoryPage: [],
+  locations: [],
+}
+
+async componentDidMount() {
+  const inventories = await axios.get(`${apiURL}/inventory`);
+  const locations = await axios.get(`${apiURL}/locations`);
+  this.setState({
+    inventoryPage: inventories.data,
+    locations: locations.data,
+  })
 }
 
 handleDisplayInventory = location => {
-  // change this to make a query based on location
-  // (location) ? location query : full query
   return (
     <div className="inventory">
       <h2 className="inventory__title">
-        {
-          this.props.match.params.locationID || "all inventory"
-        }
+        {this.props.match.params.locationID}
       </h2>
+      <div className="inventory__subtitles">
+        <p className="inventory__subtitlesItemID">Item ID</p>
+        <p className="inventory__subtitlesItemName">Item Name</p>
+        <p className="inventory__subtitlesCases">Cases</p>
+      </div>
       {
-        this.state.inventory
-          .filter(item => 
-            (location)
-            ? location === item.location
-            : item.location)
-          .map(item => {
-          return (
-            <div className="inventory__item">
-              <p className="inventory__itemID">{item.id}</p>
-              <p className="inventory__itemDetails">{item.name}</p>
-            </div>
+        this.state.inventoryPage
+          .filter(row => location === row.location_details.name)
+          .map(inventory => {
+            return (
+              <div key={inventory.id} className="inventory__row">
+                <p className="inventory__rowItemID">{inventory.item_id}</p>
+                <p className="inventory__rowItemName">{inventory.item_details.name}</p>
+                <p className="inventory__rowCases">{inventory.cases}</p>
+              </div>
+            )
+          })
+      }
+    </div>
+  )
+}
+
+handleDisplayInventoryAll = () => {
+  const inventoryPageAll = [];
+  for (let i = 0; i < this.state.inventoryPage.length; i += this.state.locations.length) {
+    inventoryPageAll.push(
+      {
+        ...this.state.inventoryPage[i],
+        cases:
+          this.state.locations.map((location, index) => {
+            return(
+              this.state.inventoryPage[i + index].cases
+            )
+          })
+      }
+    )
+  }
+  return(
+    <div className="inventory">
+      <h2 className="inventory__title">
+        all locations
+      </h2>
+      <div className="inventory__subtitles">
+        <p className="inventory__subtitlesItemID">Item ID</p>
+        <p className="inventory__subtitlesItemName">Item Name</p>
+        {
+          this.state.locations.map(location => {
+            return(
+              <p className="inventory__subtitlesCases">
+                {location.name}
+              </p>
+            )
+          })
+        }
+      </div>
+      {
+        inventoryPageAll.map(row => {
+          return(
+              <div key={row.id} className="inventory__row">
+                <p className="inventory__rowItemID">{row.item_id}</p>
+                <p className="inventory__rowItemName">{row.item_details.name}</p>
+                <div className="inventory__rowCases">
+                  {
+                    row.cases.map((cases, i) => {
+                      return(
+                        <p key={i} className="inventory__rowCaseNumber">{cases}</p>
+                      )
+                    })
+                  }
+                </div>
+              </div>
           )
         })
       }
@@ -41,7 +108,9 @@ render() {
   return(
     <>
       {
-        this.handleDisplayInventory(this.props.match.params.locationID)
+        (this.props.match.params.locationID)
+        ? this.handleDisplayInventory(this.props.match.params.locationID)
+        : this.handleDisplayInventoryAll()
       }
     </>
   )

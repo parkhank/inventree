@@ -1,13 +1,48 @@
 // Inventory Page SCSS
+@import '../../partials/_variables.scss';
 .inventory {
   padding: 12px;
+  background-color: $bg;
+  height: 100vh;
   &__title {
     text-transform: capitalize;
+    font-size: 20px;
+    padding: 12px 0px;
   }
-  &__item {
+  &__subtitles {
     display: flex;
+    font-weight: bold;
+    padding-bottom: 8px;
+    &ItemID {
+      width: 100px;
+    }
+    &ItemName {
+      width: 500px;
+    }
+    &Cases {
+      width: 90px;
+      text-transform: capitalize;
+      text-align: center;
+    }
   }
-  &__itemID {
-    width: 80px;
+  &__row {
+    display: flex;
+    &ItemID {
+      width: 100px;
+    }
+    &ItemName {
+      width: 500px;
+    }
+    &LocationName {
+      width: 200px;
+      text-transform: capitalize;
+    }
+    &Cases {
+      display: flex;
+    }
+    &CaseNumber {
+      width: 90px;
+      text-align: center;
+    }
   }
 }
