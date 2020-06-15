@@ -10,7 +10,8 @@ exports.up = knex => {
     table
       .integer("item_id")
       .notNullable()
-      .references("items.id");
+      .references("items.id")
+      .onDelete("CASCADE");
     table
       .integer("cases")
       .notNullable()

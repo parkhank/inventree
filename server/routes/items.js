@@ -25,6 +25,10 @@ router
   }))
   return res.status(201).json(newInventoryArr)
 })
+.delete(async (req, res) => {
+  const deleteItem = await Item.where("id", req.body.id).destroy()
+  return res.status(200).json({ deleteItem });
+})
 
 module.exports = router;
 

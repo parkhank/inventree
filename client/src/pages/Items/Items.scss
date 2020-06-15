@@ -41,7 +41,6 @@
       border: 2px solid $primary-highlight;
       border-radius: 4px;
       padding: 4px 12px;
-      // margin-right: 12px;
       margin-bottom: 4px;
       color: grey;
     }
@@ -71,5 +70,31 @@
     border-radius: 8px;
     margin-top: 12px;
     font-size: 18px;
+  }
+
+  &__deleteForm {
+    display: flex;
+    margin-top: 12px;
+    padding-left: 120px;
+    background-color: $primary-light;
+    &Left {
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+    }
+    &Right {
+      display: flex;
+      align-items: flex-start;
+    }
+    &ID {
+      background-color: white;
+      border: 2px solid $primary-highlight;
+      border-radius: 4px;
+      padding: 4px 12px;
+      margin-bottom: 4px;
+      color: grey;
+      width: 100px;
+      margin-right: 400px;
+    }
   }
 }

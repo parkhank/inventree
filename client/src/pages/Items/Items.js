@@ -29,6 +29,15 @@ addItem = (e) => {
   
 }
 
+deleteItem = (e) => {
+  console.log(e.target.id.value);
+  axios
+  .delete(`${apiURL}/items`, {
+    data: { id: e.target.id.value }
+  })
+  .catch(err => console.error(err))
+}
+
 render() {
   return (
     <div className="items">
@@ -74,6 +83,21 @@ render() {
           <button
             className="items__button"
             type="submit">Create Item</button>
+        </div>
+      </form>
+      <form
+        className="items__deleteForm"
+        onSubmit={this.deleteItem}>
+        <div className="items__deleteFormLeft">
+          <input
+            className="items__deleteFormID"
+            name="id"
+            placeholder="ID"/>
+        </div>
+        <div className="items__deleteFormRight">
+          <button
+            className="items__button"
+            type="submit">Delete Item</button>
         </div>
       </form>
     </div>
