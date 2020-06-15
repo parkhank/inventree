@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Inventory from './pages/Inventory';
-import NewItem from './pages/NewItem';
+import Items from './pages/Items';
 
 const App = () => {
   return (
@@ -17,8 +17,8 @@ const App = () => {
           path="/branch/:locationID"
           component={Inventory} />
         <Route
-          path="/new-item"
-          component={NewItem} />
+          path="/items"
+          component={Items} />
       </Switch>
     </BrowserRouter>
   );

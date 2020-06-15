@@ -160,8 +160,8 @@ render() {
           </Link>
         </div>
         <div className="navigation__dropdown">
-          <Link to="/new-item">
-            <p className="navigation__dropdownTitle">New Item</p>
+          <Link to="/items">
+            <p className="navigation__dropdownTitle">Edit Items</p>
           </Link>
         </div>
       </div>

@@ -1,0 +1,75 @@
+
+@import '../../partials/_variables.scss';
+.items {
+  background-color: $bg;
+  height: 100vh;
+  &__hero {
+    padding: 80px 120px;
+    background-image: url("../../assets/hero2.jpg");
+    background-size: cover;
+  }
+  &__header {
+    font-size: 60px;
+  }
+  &__title {
+    font-size: 20px;
+  }
+
+  &__newForm {
+    display: flex;
+    margin-top: 12px;
+    padding-left: 120px;
+    background-color: $primary-light;
+    &Left {
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+    }
+    &Top {
+      display: flex;
+    }
+    &Bottom {
+      display: flex;
+    }
+    &Right {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    &ID, &Name, &Cost, &Measure, &Number {
+      background-color: white;
+      border: 2px solid $primary-highlight;
+      border-radius: 4px;
+      padding: 4px 12px;
+      // margin-right: 12px;
+      margin-bottom: 4px;
+      color: grey;
+    }
+    &ID {
+      width: 100px;
+      margin-right: 12px;
+    }
+    &Name {
+      width: 388px;
+    }
+    &Cost {
+      width: 100px;
+      margin-left: 112px;
+      margin-right: 4px;
+    }
+    &Number {
+      width: 94px;
+      margin-right: 4px;
+    }
+  }
+
+
+  &__button {
+    background-color: $primary-highlight;
+    color: $primary-dark;
+    padding: 4px 12px;
+    border-radius: 8px;
+    margin-top: 12px;
+    font-size: 18px;
+  }
+}
