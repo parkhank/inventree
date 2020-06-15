@@ -159,6 +159,11 @@ render() {
             <p className="navigation__dropdownTitle">Invoice</p>
           </Link>
         </div>
+        <div className="navigation__dropdown">
+          <Link to="/new-item">
+            <p className="navigation__dropdownTitle">New Item</p>
+          </Link>
+        </div>
       </div>
     </div>
   )
