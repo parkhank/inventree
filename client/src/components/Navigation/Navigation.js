@@ -131,28 +131,9 @@ render() {
           }
         </div>
         <div className="navigation__dropdown">
-          <p
-            className="navigation__dropdownTitle"
-            onClick={this.handleUsageToggle}>Usage</p>
-          { 
-            (this.state.usageOpen)
-              ? <OutsideClick onOutsideClick={e => {
-                this.setState({ usageOpen: false })
-                }}>
-                <ul className="navigation__dropdownList">
-                  {
-                    this.state.locations.map((location, i) => {
-                      return(
-                        <Link key={i} to={`/usage/${location}`}>
-                          <li className="navigation__dropdownItem">{location}</li>
-                        </Link>
-                      )
-                    })
-                  }
-                </ul>
-              </OutsideClick>
-              : null
-          }
+          <Link to="/cases">
+            <p className="navigation__dropdownTitle">Usage</p>
+          </Link>
         </div>
         <div className="navigation__dropdown">
           <Link to="/invoice">

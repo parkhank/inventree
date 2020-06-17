@@ -1,0 +1,57 @@
+@import '../../partials/_variables.scss';
+.usage {
+  background-color: $bg;
+  height: 100vh;
+  &__hero {
+    padding: 80px 120px;
+    background-image: url("../../assets/hero3.jpg");
+    background-size: cover;
+    background-position: 50% 40%;
+  }
+  &__header {
+    font-size: 60px;
+  }
+  &__title {
+    text-transform: capitalize;
+    font-size: 20px;
+  }
+  &__subtitles {
+    display: flex;
+    font-weight: bold;
+    padding: 12px 12px 12px 120px;
+    background-color: $primary-light;
+    margin-bottom: 8px;
+    color: $primary-dark;
+    &-timestamp {
+      width: 150px;
+    }
+    &-item {
+      width: 500px;
+    }
+    &-location {
+      width: 150px;
+    }
+    &-cases {
+      width: 90px;
+      text-align: center;
+    }
+  }
+  &__row {
+    display: flex;
+    padding-left: 120px;
+    &-timestamp {
+      width: 150px;
+    }
+    &-item {
+      width: 500px;
+    }
+    &-location {
+      width: 150px;
+      text-transform: capitalize;
+    }
+    &-cases {
+      width: 90px;
+      text-align: center;
+    }
+  }
+}

@@ -6,6 +6,10 @@ const router = express.Router();
 
 router
 .route("/")
+.get(async (req, res) => {
+  const items = await Item.fetchAll();
+  return res.status(200).json(items);
+})
 .post(async (req, res) => {
   const locations = await Location.fetchAll();
   const newItem = await new Item({
