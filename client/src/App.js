@@ -5,6 +5,7 @@ import Inventory from './pages/Inventory';
 import Items from './pages/Items';
 import CasesUsed from './pages/CasesUsed';
 import Count from './pages/Count';
+import Invoice from './pages/Invoice';
 
 const App = () => {
   return (
@@ -27,6 +28,9 @@ const App = () => {
         <Route
           path="/count/:locationID"
           component={Count} />
+        <Route
+          path="/invoice"
+          component={Invoice} />
       </Switch>
     </BrowserRouter>
   );

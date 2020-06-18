@@ -23,6 +23,18 @@ router
   })
   return res.status(200).json(inventoryPage);
 })
+.put(async (req, res) => {
+  console.log(req.body.item_id, req.body.locations_id)
+  const inventory = await Inventory.where({
+    item_id: req.body.item_id,
+    location_id: req.body.location_id
+  }).fetch();
+  const oldCases = inventory.attributes.cases;
+  const invoice = await inventory.save({
+    cases: parseInt(req.body.cases) + parseInt(oldCases)
+  }, { patch: true });
+  return res.status(201).json(invoice);
+})
 
 const singlePost = async (body, params, res) => {
   const locationID = await Location.where({
@@ -72,17 +84,6 @@ router
     updatedList.push(newUpdate);
   })
   return res.status(200).json(await Promise.all(updatedList));
-  // const locationID = await Location.where({
-  //   name: req.params.location
-  // }).fetch();
-  // const toUpdate = await Inventory.where({
-  //   item_id: req.body.item_id,
-  //   location_id: locationID.attributes.id,
-  // }).fetch();
-  // const updated = await toUpdate.save({
-  //   cases: req.body.cases
-  // }, { patch: true })
-  // return res.status(200).json(updated)
 })
 
 module.exports = router;

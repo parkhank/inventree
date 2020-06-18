@@ -1,0 +1,50 @@
+@import '../../partials/_variables.scss';
+.invoice {
+  background-color: $bg;
+  height: 100vh;
+  &__hero {
+    padding: 80px 120px;
+    background-image: url("../../assets/hero5.jpg");
+    background-size: cover;
+    background-position: 50% 100%;
+  }
+  &__header {
+    font-size: 60px;
+  }
+  &__title {
+    font-size: 20px;
+  }
+  &__form {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    padding: 12px 0px 12px 120px;
+    background-color: $primary-light;
+    &-ID, &-name, &-cases {
+      background-color: white;
+      border: 2px solid $primary-highlight;
+      border-radius: 4px;
+      padding: 4px 12px;
+      margin-bottom: 4px;
+      margin-right: 12px;
+      color: grey;
+    }
+    &-ID {
+      width: 100px;
+    }
+    &-name {
+      width: 288px;
+    }
+    &-cases {
+      width: 94px;
+    }
+    &-button {
+      background-color: $primary-highlight;
+      color: $primary-dark;
+      padding: 4px 12px;
+      border-radius: 8px;
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+  }
+}
