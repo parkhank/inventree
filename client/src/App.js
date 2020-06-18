@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import Inventory from './pages/Inventory';
 import Items from './pages/Items';
 import CasesUsed from './pages/CasesUsed';
+import Count from './pages/Count';
 
 const App = () => {
   return (
@@ -23,6 +24,9 @@ const App = () => {
         <Route
           path="/cases"
           component={CasesUsed} />
+        <Route
+          path="/count/:locationID"
+          component={Count} />
       </Switch>
     </BrowserRouter>
   );

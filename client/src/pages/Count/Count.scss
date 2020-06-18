@@ -1,19 +1,19 @@
-// Inventory Page SCSS
 @import '../../partials/_variables.scss';
-.inventory {
+.count {
   background-color: $bg;
   height: 100vh;
   &__hero {
     padding: 80px 120px;
-    background-image: url("../../assets/hero.jpg");
+    background-image: url("../../assets/hero4.jpg");
     background-size: cover;
+    background-position: 80% 24%;
   }
   &__header {
     font-size: 60px;
   }
   &__title {
-    text-transform: capitalize;
     font-size: 20px;
+    text-transform: capitalize;
   }
   &__subtitles {
     display: flex;
@@ -22,38 +22,39 @@
     background-color: $primary-light;
     margin-bottom: 8px;
     color: $primary-dark;
-    &ItemID {
+    &-ID {
       width: 100px;
     }
-    &ItemName {
+    &-name {
       width: 500px;
     }
-    &Cases {
-      width: 90px;
-      text-transform: capitalize;
-      text-align: center;
+    &-cases {
+      width: 100px;
     }
   }
   &__row {
     display: flex;
     padding-left: 120px;
-    padding-bottom: 2px;
-    &ItemID {
+    &-ID {
       width: 100px;
     }
-    &ItemName {
+    &-name {
       width: 500px;
     }
-    &LocationName {
-      width: 200px;
-      text-transform: capitalize;
+    &-count {
+      width: 80px;
+      background-color: white;
+      border: 1px solid $primary-highlight;
+      border-radius: 4px;
+      color: grey;
+      padding: 0px 12px;
     }
-    &Cases {
-      display: flex;
-    }
-    &CaseNumber {
-      width: 90px;
-      text-align: center;
-    }
+  }
+  &__button {
+    background-color: $primary-highlight;
+    color: $primary-dark;
+    padding: 4px 12px;
+    border-radius: 8px;
+    margin: 12px 118px;
   }
 }

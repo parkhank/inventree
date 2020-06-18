@@ -24,36 +24,65 @@ router
   return res.status(200).json(inventoryPage);
 })
 
-router
-.route("/:location")
-.post(async (req, res) => {
+const singlePost = async (body, params, res) => {
   const locationID = await Location.where({
-    name: req.params.location
+    name: params.location
   }).fetch();
   const oldInventory = await Inventory.where({
-    item_id: req.body.item_id,
+    item_id: body.item_id,
     location_id: locationID.attributes.id,
   }).fetch();
   const oldCount = oldInventory.attributes.cases;
   const newCount = await new CasesUsed({
-    item_id: req.body.item_id,
+    item_id: body.item_id,
     location_id: locationID.attributes.id,
-    cases: oldCount - req.body.cases,
+    cases: oldCount - body.cases,
   }).save(null, { method: 'insert' })
-  return res.status(201).json(newCount)
-})
-.put(async (req, res) => {
+  return newCount.attributes;
+}
+
+const singlePut = async (body, params, res) => {
   const locationID = await Location.where({
-    name: req.params.location
+    name: params.location
   }).fetch();
   const toUpdate = await Inventory.where({
-    item_id: req.body.item_id,
+    item_id: body.item_id,
     location_id: locationID.attributes.id,
   }).fetch();
   const updated = await toUpdate.save({
-    cases: req.body.cases
+    cases: body.cases
   }, { patch: true })
-  return res.status(200).json(updated)
+  return updated.attributes;
+}
+
+router
+.route("/:location")
+.post(async (req, res) => {
+  const countList = [];
+  req.body.counts.forEach(count => {
+    const newCount = singlePost(count, req.params, res);
+    countList.push(newCount);
+  })
+  return res.status(201).json(await Promise.all(countList));
+})
+.put(async (req, res) => {
+  const updatedList = [];
+  req.body.counts.forEach(count => {
+    const newUpdate = singlePut(count, req.params, res);
+    updatedList.push(newUpdate);
+  })
+  return res.status(200).json(await Promise.all(updatedList));
+  // const locationID = await Location.where({
+  //   name: req.params.location
+  // }).fetch();
+  // const toUpdate = await Inventory.where({
+  //   item_id: req.body.item_id,
+  //   location_id: locationID.attributes.id,
+  // }).fetch();
+  // const updated = await toUpdate.save({
+  //   cases: req.body.cases
+  // }, { patch: true })
+  // return res.status(200).json(updated)
 })
 
 module.exports = router;

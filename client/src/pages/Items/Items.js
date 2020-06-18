@@ -30,7 +30,6 @@ addItem = (e) => {
 }
 
 deleteItem = (e) => {
-  console.log(e.target.id.value);
   axios
   .delete(`${apiURL}/items`, {
     data: { id: e.target.id.value }
