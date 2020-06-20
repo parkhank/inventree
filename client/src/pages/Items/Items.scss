@@ -1,4 +1,4 @@
-
+@import '../../partials/_mixins.scss';
 @import '../../partials/_variables.scss';
 .items {
   background-color: $bg;
@@ -63,12 +63,8 @@
 
 
   &__button {
-    background-color: $primary-highlight;
-    color: $primary-dark;
-    padding: 4px 12px;
-    border-radius: 8px;
+    @include button;
     margin-top: 12px;
-    font-size: 18px;
   }
 
   &__deleteForm {

@@ -7,7 +7,7 @@ import './Navigation.scss';
 
 import styled, { keyframes } from 'styled-components';
 import { fadeInDown } from 'react-animations';
-const FadeInDown = styled.div`animation: 1s ${keyframes `${fadeInDown}`}`;
+const FadeInDown = styled.div`animation: 0.5s ${keyframes `${fadeInDown}`}`;
 
 const apiURL = "http://localhost:8080";
 

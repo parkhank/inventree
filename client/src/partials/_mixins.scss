@@ -1,0 +1,16 @@
+// Button styling
+@mixin button {
+  background-color: $primary-highlight;
+  color: $primary-dark;
+  border: 2px solid $primary-highlight;
+  width: 140px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 18px;
+  &:hover {
+    background-color: $button-hover-light;
+    color: $button-hover-dark;
+    border-color: $button-hover-light;
+    transition: 0.1s;
+  }
+}
