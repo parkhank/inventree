@@ -9,6 +9,7 @@ class Inventory extends React.Component {
 state = {
   inventoryPage: [],
   locations: [],
+  page: "all",
 }
 
 async componentDidMount() {
@@ -24,7 +25,8 @@ handleDisplayInventory = location => {
   return (
     <div className="inventory">
       <div className="inventory__hero">
-        <h1 className="inventory__header">Inventory</h1>
+        <h1
+          className="inventory__header">Inventory</h1>
         <h2 className="inventory__title">
           {this.props.match.params.locationID}
         </h2>

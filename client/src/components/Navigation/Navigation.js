@@ -5,6 +5,10 @@ import axios from 'axios';
 import logo from '../../assets/logo.png';
 import './Navigation.scss';
 
+import styled, { keyframes } from 'styled-components';
+import { fadeInDown } from 'react-animations';
+const FadeInDown = styled.div`animation: 1s ${keyframes `${fadeInDown}`}`;
+
 const apiURL = "http://localhost:8080";
 
 class Navigation extends React.Component {
@@ -91,17 +95,22 @@ render() {
               ? <OutsideClick onOutsideClick={e => {
                 this.setState({ branchOpen: false })
                 }}>
-                <ul className="navigation__dropdownList">
-                  {
-                    this.state.locations.map((location, i) => {
-                      return(
-                        <Link key={i} to={`/branch/${location}`}>
-                          <li className="navigation__dropdownItem">{location}</li>
-                        </Link>
-                      )
-                    })
-                  }
-                </ul>
+                <FadeInDown>
+                  <ul className="navigation__dropdownList">
+                    {
+                      this.state.locations.map((location, i) => {
+                        return(
+                          <Link
+                            key={i}
+                            to={`/branch/${location}`}
+                            onClick={() => this.setState({ branchOpen: false })}>
+                            <li className="navigation__dropdownItem">{location}</li>
+                          </Link>
+                        )
+                      })
+                    }
+                  </ul>
+                </FadeInDown>
               </OutsideClick>
               : null
           }
@@ -115,17 +124,22 @@ render() {
               ? <OutsideClick onOutsideClick={e => {
                 this.setState({ countOpen: false })
                 }}>
-                <ul className="navigation__dropdownList">
-                  {
-                    this.state.locations.map((location, i) => {
-                      return(
-                        <Link key={i} to={`/count/${location}`}>
-                          <li className="navigation__dropdownItem">{location}</li>
-                        </Link>
-                      )
-                    })
-                  }
-                </ul>
+                <FadeInDown>
+                  <ul className="navigation__dropdownList">
+                    {
+                      this.state.locations.map((location, i) => {
+                        return(
+                          <Link 
+                            key={i}
+                            to={`/count/${location}`}
+                            onClick={() => this.setState({ countOpen: false })}>
+                            <li className="navigation__dropdownItem">{location}</li>
+                          </Link>
+                        )
+                      })
+                    }
+                  </ul>
+                </FadeInDown>
               </OutsideClick>
               : null
           }
