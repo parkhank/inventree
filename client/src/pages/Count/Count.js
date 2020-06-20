@@ -34,7 +34,7 @@ submitCounts = async (e) => {
   await axios
   .put(`${apiURL}/inventory/${this.props.match.params.locationID}`, countList)
   .catch(err => console.error(err));
-
+  await this.props.history.push(`/branch/${this.props.match.params.locationID}`)
 }
 
 async componentDidMount() {

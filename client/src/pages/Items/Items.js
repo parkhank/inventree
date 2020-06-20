@@ -43,7 +43,7 @@ render() {
       <div className="items__hero">
         <h1 className="items__header">Edit Items</h1>
         <h2 className="items__title">
-          Create, Edit, or Delete Items
+          Add or Remove Items
         </h2>
       </div>
       <form
