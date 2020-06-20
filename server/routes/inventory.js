@@ -24,7 +24,8 @@ router
   return res.status(200).json(inventoryPage);
 })
 .put(async (req, res) => {
-  console.log(req.body.item_id, req.body.locations_id)
+  // console.log("req.body", req.body)
+  // FROM: invoice form 
   const inventory = await Inventory.where({
     item_id: req.body.item_id,
     location_id: req.body.location_id
