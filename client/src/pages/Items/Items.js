@@ -6,9 +6,10 @@ const apiURL = "http://localhost:8080";
 
 class Items extends React.Component {
 
-addItem = (e) => {
+addItem = async (e) => {
+  e.preventDefault();
   if (e.target.measure.value === "unitsPerCase") {
-    axios
+    await axios
     .post(`${apiURL}/items`, {
       id: e.target.id.value,
       name: e.target.name.value,
@@ -17,7 +18,7 @@ addItem = (e) => {
     })
     .catch(err => console.error(err))
   } else {
-    axios
+    await axios
     .post(`${apiURL}/items`, {
       id: e.target.id.value,
       name: e.target.name.value,
@@ -26,15 +27,17 @@ addItem = (e) => {
     })
     .catch(err => console.error(err))
   }
-  
+  this.props.history.push("/");
 }
 
-deleteItem = (e) => {
-  axios
+deleteItem = async (e) => {
+  e.preventDefault();
+  await axios
   .delete(`${apiURL}/items`, {
     data: { id: e.target.id.value }
   })
   .catch(err => console.error(err))
+  this.props.history.push("/");
 }
 
 render() {
