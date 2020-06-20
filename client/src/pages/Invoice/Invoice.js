@@ -35,7 +35,7 @@ addCount = async (e) => {
   await this.setState({
     item_id: "",
     location_id: "",
-    cases: null,
+    cases: "",
   })
 }
 
