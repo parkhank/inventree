@@ -8,6 +8,7 @@ class Invoice extends React.Component {
 
 state = {
   locationList: [],
+  itemList: [],
 }
 
 addCount = async (e) => {
@@ -26,6 +27,10 @@ componentDidMount = async () => {
   this.setState({
     locationList: locations.data,
   })
+  const items = await axios.get(`${apiURL}/items`);
+  this.setState({
+    itemList: items.data,
+  })
 }
 
 render() {
@@ -40,14 +45,31 @@ render() {
       <form
         className="invoice__form"
         onSubmit={this.addCount}>
-        <input
-          className="invoice__form-ID"
-          name="id"
-          placeholder="ID"/>
-        <input 
-          className="invoice__form-name"
+        <select
+          className="invoice__form-item"
+          name="item">
+          <option value="">Choose an item:</option>
+          {
+            this.state.itemList.map(item => {
+              return(
+              <option value={item.id}>{item.name}</option>
+              )
+            })
+          }
+        </select>
+        <select
+          className="invoice__form-location"
           name="location"
-          placeholder="Location"/>
+          placeholder="Location">
+          <option value="">Choose a location:</option>
+          {
+            this.state.locationList.map(location => {
+              return(
+                <option value={location.name}>{location.name}</option>
+              )
+            })
+          }
+        </select>
         <input 
           className="invoice__form-cases"
           name="cases"
