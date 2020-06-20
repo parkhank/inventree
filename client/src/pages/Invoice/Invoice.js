@@ -37,6 +37,7 @@ addCount = async (e) => {
     location_id: "",
     cases: "",
   })
+  this.props.history.push(`/`)
 }
 
 componentDidMount = async () => {
