@@ -1,7 +1,6 @@
 @import '../../partials/_variables.scss';
 .invoice {
   background-color: $bg;
-  height: 100vh;
   &__hero {
     padding: 80px 120px;
     background-image: url("../../assets/hero5.jpg");
@@ -16,24 +15,34 @@
   }
   &__form {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     margin-top: 12px;
     padding: 12px 0px 12px 120px;
     background-color: $primary-light;
-    &-item, &-location, &-cases {
+    &-top, &-bottom {
+      display: flex;
+    }
+    &-item, &-itemID, &-location, &-cases {
       background-color: white;
       border: 2px solid $primary-highlight;
       border-radius: 4px;
       padding: 4px 12px;
       margin-bottom: 4px;
-      margin-right: 12px;
+      margin-right: 4px;
       color: grey;
     }
     &-item {
-      width: 400px;
+      width: 500px;
+    }
+    &-itemID {
+      width: 100px;
+      height: 40px;
+      background-color: $primary-light;
+      border-color: $primary-light;
     }
     &-location {
-      width: 288px;
+      width: 208px;
+      margin-left: 104px;
       text-transform: capitalize;
     }
     &-cases {
@@ -45,6 +54,7 @@
       padding: 4px 12px;
       border-radius: 8px;
       margin-bottom: 4px;
+      margin-left: 8px;
       font-size: 18px;
     }
   }
